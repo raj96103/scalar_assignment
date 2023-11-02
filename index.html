@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="assets/css/styles.css">
+</head>
+
+<body>
+    <h1>Cab Booking System</h1>
+    <form id="bookingForm">
+        <div>
+            <label>Email</label>
+            <input type="email" id="email" placeholder="Email">
+        </div>
+        <div>
+            <label>Source</label>
+            <select type="text" id="source" placeholder="Source">
+                <option value="" disabled selected>Select your Source</option>
+                <option value="1">A</option>
+                <option value="2">B</option>
+                <option value="3">C</option>
+                <option value="4">D</option>
+                <option value="5">E</option>
+                <option value="6">F</option>
+            </select>
+        </div>
+        <div>
+            <label> Destination</label>
+            <select type="text" id="destination" placeholder="Destination">
+                <option value="" disabled selected>Select your Destination</option>
+                <option value="1">A</option>
+                <option value="2">B</option>
+                <option value="3">C</option>
+                <option value="4">D</option>
+                <option value="5">E</option>
+                <option value="6">F</option>
+            </select>
+        </div>
+        <div>
+            <label>Choose Vehicle Type</label>
+            <select id="cabType">
+                <option value="" disabled selected>Choose your Vehicle Type</option>
+                <option value="10">Bike (₹10/min)</option>
+                <option value="15">Auto (₹15/min)</option>
+                <option value="30">Cab Mini (₹30/min)</option>
+                <option value="40">Prime Sedan (₹40/min)</option>
+                <option value="50">Prime SUV (₹50/min)</option>
+            </select>
+
+        </div>
+        <br/>
+        <button type="submit" id="bookButton">Book Now</button>
+
+    </form>
+    <div id="result">
+
+    </div>
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>
