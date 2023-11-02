@@ -1,15 +1,24 @@
 // assets/js/main.js
+function numberToUpperCaseLetter(number) {
+    if (number >= 1 && number <= 26) {
+        return String.fromCharCode(number + 64);
+    } else {
+        return "Invalid input";
+    }
+}
+
 
 document.getElementById('bookingForm').addEventListener('submit', function (e) {
     e.preventDefault();
 
-    const source = document.getElementById('source').value;
-    const destination = document.getElementById('destination').value;
+    var source = document.getElementById('source').value;
+    var destination = document.getElementById('destination').value;
     const email = document.getElementById('email').value;
     const cabType = document.getElementById('cabType').value;
-    const { route, time } = calculateShortestRoute(source, destination);
+    source=parseInt(source)
+    destination=parseInt(destination)
+    const { route, time } = calculateShortestRoute(numberToUpperCaseLetter(source),numberToUpperCaseLetter(destination));
     const estimatedCost = time * cabType; // Assuming cabType is the price per minute
-    console.log(time,estimatedCost);
     // Display the route and estimated cost in the result div
     document.getElementById('result').innerHTML = `
         <p>Shortest Route: ${route.join(' -> ')}</p>
@@ -20,7 +29,7 @@ document.getElementById('bookingForm').addEventListener('submit', function (e) {
 
 
 // JavaScript function to calculate the shortest route
-function calculateShortestRoute(source, destination) {
+function calculateShortestRoute(source='A', destination='D') {
     // Define the distances between places
     const distances = {
         'A-B': 5,
@@ -45,7 +54,7 @@ function calculateShortestRoute(source, destination) {
 
     distance[source] = 0;
 
-    while (Object.keys(visited).length < places.length) {
+    while (true) {
         const unvisited = Object.entries(distance)
             .filter(([place, dist]) => !visited[place] && dist !== Infinity)
             .sort((a, b) => a[1] - b[1]);
@@ -74,6 +83,6 @@ function calculateShortestRoute(source, destination) {
 
     shortestRoute.unshift(source);
     const shortestTime = distance[destination];
-
+    // console.log(shortestRoute,shortestTime);
     return { route: shortestRoute, time: shortestTime };
 }
